@@ -5,8 +5,7 @@ use bevy::{
     ecs::{bundle::Bundle, prelude::*},
     input::{mouse::MouseMotion, prelude::*},
     math::prelude::*,
-    render::prelude::*,
-    transform::components::Transform,
+    transform::components::Transform, prelude::Camera3dBundle,
 };
 use serde::{Deserialize, Serialize};
 
@@ -40,13 +39,13 @@ pub struct FpsCameraBundle {
     #[bundle]
     look_transform: LookTransformBundle,
     #[bundle]
-    perspective: PerspectiveCameraBundle,
+    perspective: Camera3dBundle,
 }
 
 impl FpsCameraBundle {
     pub fn new(
         controller: FpsCameraController,
-        mut perspective: PerspectiveCameraBundle,
+        mut perspective: Camera3dBundle,
         eye: Vec3,
         target: Vec3,
     ) -> Self {
