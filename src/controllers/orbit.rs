@@ -8,7 +8,7 @@ use bevy::{
         prelude::*,
     },
     math::prelude::*,
-    render::prelude::*,
+    render::{camera::Camera3d, prelude::*},
     transform::components::Transform,
 };
 use serde::{Deserialize, Serialize};
@@ -43,13 +43,13 @@ pub struct OrbitCameraBundle {
     #[bundle]
     look_transform: LookTransformBundle,
     #[bundle]
-    perspective: PerspectiveCameraBundle,
+    perspective: PerspectiveCameraBundle<Camera3d>,
 }
 
 impl OrbitCameraBundle {
     pub fn new(
         controller: OrbitCameraController,
-        mut perspective: PerspectiveCameraBundle,
+        mut perspective: PerspectiveCameraBundle<Camera3d>,
         eye: Vec3,
         target: Vec3,
     ) -> Self {
